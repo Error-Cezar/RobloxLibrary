@@ -1,4 +1,4 @@
-function module.getDate2(sec)
+function getDate2(sec)
 	local date = os.date("!*t", sec)
 	print(date)
 	local Month = GetMonth(date["month"])
