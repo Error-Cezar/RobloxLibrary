@@ -1,7 +1,8 @@
 function GetClosestPart(target: BasePart, Folder: Folder)
 local Parts = {}
 
-for _, Part in pairs(script.Parent.Folder:GetChildren()) do
+for _, Part in pairs(Folder:GetChildren()) do
+	if Part:IsA("BasePart") then
 		local Temp = {
 			           Part = nil;
 			           Distance = nil;
@@ -12,6 +13,7 @@ for _, Part in pairs(script.Parent.Folder:GetChildren()) do
 		Temp.Distance = distance
 		table.insert(Parts, Temp)
 			Temp = nil
+	end
 end
 	
 	local min = math.huge
