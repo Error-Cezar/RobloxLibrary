@@ -1,32 +1,16 @@
-function GetClosestPart(target: BasePart, Folder: Folder)
-local Parts = {}
-
-for _, Part in pairs(Folder:GetChildren()) do
-	if Part:IsA("BasePart") then
-		local Temp = {
-			           Part = nil;
-			           Distance = nil;
-		             }
-	    local FakePos = Vector3.new(Part.Position.X, target.Position.Y, Part.Position.Z)
-		local distance = (target.Position -FakePos).Magnitude
-		Temp.Part    = Part
-		Temp.Distance = distance
-		table.insert(Parts, Temp)
-			Temp = nil
-	end
-end
-	
-	local min = math.huge
-	local Part 
-	for i,v in ipairs(Parts) do
-		min = math.min(min, v.Distance)
-	end
-	for _,v in ipairs(Parts) do
-		if v.Distance == min then
-			Part = v
+function GetClosestPart(target: BasePart, folder: Folder): BasePart | nil
+	local closestPart = nil
+	local closestDistance = math.huge
+	for _, part in pairs(folder:GetChildren()) do
+		if part:IsA("BasePart") then
+			local distance = (target.Position - part.Position).Magnitude
+			if distance < closestDistance then
+				closestPart = part
+				closestDistance = distance
+			end
 		end
 	end
-	return Part.Part
+	return closestPart
 end
 
 print(GetClosest(script.Parent.Player):GetFullName())
