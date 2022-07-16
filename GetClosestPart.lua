@@ -29,4 +29,4 @@ end
 	return Part.Part
 end
 
-print(GetClosest(script.Parent.Player):GetFullName())
+print(GetClosestPart(script.Parent.Player, script.Parent.Folder):GetFullName())
