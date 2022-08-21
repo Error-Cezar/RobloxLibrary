@@ -46,7 +46,9 @@ function module:CreateUI(Location, UIName: string)
     local SelectorButton = Instance.new("ImageButton")
     local Button_1 = Instance.new("TextButton")
     
-    
+    if syn and syn.protect_gui then
+         syn.protect_gui(ScreenGui)
+    end
     ScreenGui.Name = UIName or "ScreenGui"
     ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
     
