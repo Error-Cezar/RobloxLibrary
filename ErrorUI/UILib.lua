@@ -370,12 +370,13 @@ function module:CreateUI(Location, UIName: string)
 
         function PageFunc:TextBox(Name: string, Execute: any, TextString: string)
             local TextFunc = {}
+	    local Callback = Execute or function() end
             local But = TextBox:Clone()
             But.Parent = Main
             But.Name = Name
             But.Text = Name
             But.TextBox.PlaceholderText = TextString or "Insert Text"
-            But.MouseButton1Click:Connect(Execute)
+            But.MouseButton1Click:Connect(function() Callback(But.TextBox.Text) end)
 
             function TextFunc:String()
                 return But.TextBox.Text or nil
