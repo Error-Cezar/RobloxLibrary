@@ -58,6 +58,8 @@ function module:CreateUI(Location, UIName: string)
     Frame.ClipsDescendants = true
     Frame.Position = UDim2.new(0.29688751697540283,0,0.10935796052217484,0)
     Frame.Size = UDim2.new(0,619,0,341)
+    Frame.Active = true
+    Frame.Draggable = true
     
     UICorner.Parent = Frame
     UICorner.Name = "UICorner"
